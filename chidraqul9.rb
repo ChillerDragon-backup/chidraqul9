@@ -4,7 +4,7 @@ require_relative 'world'
 require_relative 'keypresses'
 require_relative 'other/os/lib/os'
 require_relative 'base'
-
+require_relative 'menu'
 
 $pos=0
 
@@ -20,7 +20,12 @@ def move_left
     end
 end
 
-loop do
-    keypress_tick
-    print_world
+def game_main
+    loop do
+        keypress_tick
+        print_world
+    end
 end
+
+menu = Menu.new
+menu.main

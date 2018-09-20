@@ -9,7 +9,6 @@ end
 
 def keypress_tick
     c = read_char
-    puts c
     if (c === "q")
         exit
     elsif (c === "d")
