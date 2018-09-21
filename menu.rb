@@ -1,11 +1,9 @@
 #!/usr/bin/ruby
 require 'io/console'
 
-class Menu
+class MenuBase
     def initialize
         @aOptions = [[],[]]
-        add_option("hello", Proc.new { puts "hello world" })
-        add_option("start", Proc.new { game_main })
     end
 
     def add_option(name,function)
@@ -63,5 +61,49 @@ class Menu
             print(row)
             row = keypresses(row)
         end
+    end
+end
+
+class Options  < MenuBase
+    def initialize
+        @aOptions = [[],[]]
+        add_option("back", Proc.new { menu_main })
+        add_option("world size", Proc.new{ 
+            cls
+            puts "world size:"
+            $WORLD_SIZE_X = gets.chomp.to_i 
+        })
+    end
+
+    def print(row)
+        cls
+        puts "+-----------------------------+"
+        puts "|        Options              |"
+        puts "+-----------------------------+"
+        puts "| q=quit w,s=choose e=select  |"
+        puts "+-----------------------------+"
+        print_options(row)
+        puts ""
+        puts "row: #{row}"
+    end
+end
+
+class MainMenu < MenuBase
+    def initialize
+        @aOptions = [[],[]]
+        add_option("start", Proc.new { game_main })
+        add_option("options", Proc.new { options_main })
+    end
+
+    def print(row)
+        cls
+        puts "+-----------------------------+"
+        puts "|        chidraqul9           |"
+        puts "+-----------------------------+"
+        puts "| q=quit w,s=choose e=select  |"
+        puts "+-----------------------------+"
+        print_options(row)
+        puts ""
+        puts "row: #{row}"
     end
 end

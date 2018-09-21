@@ -7,6 +7,21 @@ require_relative 'base'
 require_relative 'menu'
 
 $pos=0
+$menu = MainMenu.new
+$options = Options.new
+
+#entry point
+def init_game
+    menu_main
+end
+
+def menu_main
+    $menu.main
+end
+
+def options_main
+    $options.main
+end
 
 def move_right
     if ($pos < $WORLD_SIZE_X)
@@ -27,5 +42,6 @@ def game_main
     end
 end
 
-menu = Menu.new
-menu.main
+if __FILE__ == $0
+  init_game
+end
