@@ -15,5 +15,9 @@ def keypress_tick
         move_right
     elsif (c === "a")
         move_left
+    elsif (c === "w")
+        move_up
+    elsif (c === "s")
+        move_down
     end
 end

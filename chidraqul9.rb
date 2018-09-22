@@ -1,5 +1,6 @@
 #!/usr/bin/ruby
 
+require_relative 'game_base'
 require_relative 'world'
 require_relative 'hud'
 require_relative 'keypresses'
@@ -7,7 +8,8 @@ require_relative 'other/os/lib/os'
 require_relative 'base'
 require_relative 'menu'
 
-$pos=0
+$posX=0
+$posY=0
 $menu = MainMenu.new
 $options = Options.new
 
@@ -24,15 +26,27 @@ def options_main
     $options.main
 end
 
+def move_down
+    if ($posY < $WORLD_SIZE_Y)
+        $posY += 1
+    end
+end
+
+def move_up
+    if ($posY > 0)
+        $posY -= 1
+    end
+end
+
 def move_right
-    if ($pos < $WORLD_SIZE_X)
-        $pos += 1
+    if ($posX < $WORLD_SIZE_X)
+        $posX += 1
     end
 end
 
 def move_left
-    if ($pos > 0)
-        $pos -= 1
+    if ($posX > 0)
+        $posX -= 1
     end
 end
 
