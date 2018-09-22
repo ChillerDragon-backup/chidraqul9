@@ -1,5 +1,6 @@
 #!/usr/bin/ruby
 
+require_relative 'game_engine'
 require_relative 'game_base'
 require_relative 'world'
 require_relative 'hud'
@@ -53,6 +54,7 @@ end
 def game_main
     loop do
         keypress_tick
+        game_engine_tick
         print_world
         print_hud
     end
