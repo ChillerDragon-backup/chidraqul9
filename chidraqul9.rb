@@ -1,6 +1,7 @@
 #!/usr/bin/ruby
 
 require_relative 'world'
+require_relative 'hud'
 require_relative 'keypresses'
 require_relative 'other/os/lib/os'
 require_relative 'base'
@@ -39,6 +40,7 @@ def game_main
     loop do
         keypress_tick
         print_world
+        print_hud
     end
 end
 
