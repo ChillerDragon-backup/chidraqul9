@@ -1,11 +1,9 @@
 #!/usr/bin/ruby
 
-$time_point=Time.now
-$time_buffer=0
-
 def get_frame_time
-    diff = Time.now - $time_point
-    $time_point = Time.now
+    @time_point ||= Time.now
+    diff = Time.now - @time_point
+    @time_point = Time.now
     return diff
 end
 
@@ -16,9 +14,10 @@ def gravity
 end
 
 def game_engine_tick
-    $time_buffer += get_frame_time
-    if ($time_buffer > 0.2)
+    @time_buffer ||= 0
+    @time_buffer += get_frame_time
+    if (@time_buffer > 0.2)
         gravity
-        $time_buffer = 0
+        @time_buffer = 0
     end
 end
